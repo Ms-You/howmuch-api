@@ -1,4 +1,4 @@
-package com.ductchpay.howmuch.domain;
+package com.dutchpay.howmuch.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

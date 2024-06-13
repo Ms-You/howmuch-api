@@ -1,4 +1,4 @@
-package com.ductchpay.howmuch.config.jwt;
+package com.dutchpay.howmuch.config.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

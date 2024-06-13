@@ -1,4 +1,4 @@
-package com.ductchpay.howmuch.common.exception;
+package com.dutchpay.howmuch.common.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

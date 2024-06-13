@@ -1,6 +1,6 @@
-package com.ductchpay.howmuch.repository;
+package com.dutchpay.howmuch.repository;
 
-import com.ductchpay.howmuch.domain.Member;
+import com.dutchpay.howmuch.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

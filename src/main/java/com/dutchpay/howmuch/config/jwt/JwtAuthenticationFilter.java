@@ -1,4 +1,4 @@
-package com.ductchpay.howmuch.config.jwt;
+package com.dutchpay.howmuch.config.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

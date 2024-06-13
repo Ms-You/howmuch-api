@@ -1,4 +1,4 @@
-package com.ductchpay.howmuch.domain;
+package com.dutchpay.howmuch.domain;
 
 public enum RoleType {
     ROLE_ADMIN, ROLE_USER

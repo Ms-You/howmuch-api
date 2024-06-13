@@ -1,4 +1,4 @@
-package com.ductchpay.howmuch.config;
+package com.dutchpay.howmuch.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;

@@ -1,4 +1,4 @@
-package com.ductchpay.howmuch.common.exception;
+package com.dutchpay.howmuch.common.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

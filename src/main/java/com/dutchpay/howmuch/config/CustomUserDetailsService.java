@@ -1,7 +1,7 @@
-package com.ductchpay.howmuch.config;
+package com.dutchpay.howmuch.config;
 
-import com.ductchpay.howmuch.domain.Member;
-import com.ductchpay.howmuch.repository.MemberRepository;
+import com.dutchpay.howmuch.domain.Member;
+import com.dutchpay.howmuch.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

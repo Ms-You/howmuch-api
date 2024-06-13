@@ -1,7 +1,7 @@
-package com.ductchpay.howmuch.config.jwt;
+package com.dutchpay.howmuch.config.jwt;
 
-import com.ductchpay.howmuch.common.exception.ErrorCode;
-import com.ductchpay.howmuch.common.exception.GlobalException;
+import com.dutchpay.howmuch.common.exception.ErrorCode;
+import com.dutchpay.howmuch.common.exception.GlobalException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -18,7 +18,6 @@ import org.springframework.stereotype.Component;
 import java.security.Key;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.stream.Collectors;
 

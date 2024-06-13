@@ -1,9 +1,9 @@
-package com.ductchpay.howmuch.config;
+package com.dutchpay.howmuch.config;
 
-import com.ductchpay.howmuch.config.jwt.JwtAccessDeniedHandler;
-import com.ductchpay.howmuch.config.jwt.JwtAuthenticationEntryPoint;
-import com.ductchpay.howmuch.config.jwt.JwtAuthenticationFilter;
-import com.ductchpay.howmuch.config.jwt.TokenProvider;
+import com.dutchpay.howmuch.config.jwt.JwtAccessDeniedHandler;
+import com.dutchpay.howmuch.config.jwt.JwtAuthenticationEntryPoint;
+import com.dutchpay.howmuch.config.jwt.JwtAuthenticationFilter;
+import com.dutchpay.howmuch.config.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

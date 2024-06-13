@@ -1,4 +1,4 @@
-package com.ductchpay.howmuch.domain;
+package com.dutchpay.howmuch.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.ductchpay.howmuch.config;
+package com.dutchpay.howmuch.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
