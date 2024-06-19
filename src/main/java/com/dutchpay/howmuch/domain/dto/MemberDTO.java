@@ -11,7 +11,9 @@ public class MemberDTO {
         private String password;
         private String passwordConfirm;
         private String name;
-        private int age;
+        private String birthYear;
+        private String birthMonth;
+        private String birthDay;
         private String gender;
     }
 

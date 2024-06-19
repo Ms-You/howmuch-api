@@ -37,11 +37,13 @@ public class AuthService {
         checkEmailExists(signUpReq.getEmail());
         checkPasswordMatched(signUpReq.getPassword(), signUpReq.getPasswordConfirm());
 
+        String birth = signUpReq.getBirthYear() + "-" + signUpReq.getBirthMonth() + "-" + signUpReq.getBirthDay();
+
         Member member = Member.builder()
                 .email(signUpReq.getEmail())
                 .password(passwordEncoder.encode(signUpReq.getPassword()))
                 .name(signUpReq.getName())
-                .age(signUpReq.getAge())
+                .birth(birth)
                 .gender(signUpReq.getGender())
                 .role(RoleType.ROLE_USER)
                 .build();
