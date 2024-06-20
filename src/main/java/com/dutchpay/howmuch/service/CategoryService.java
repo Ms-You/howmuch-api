@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RequiredArgsConstructor
 @Transactional
 @Service
@@ -30,6 +33,21 @@ public class CategoryService {
                 .build();
 
         categoryRepository.save(category);
+    }
+
+    /**
+     * 카테고리 목록 조회
+     * @return
+     */
+    @Transactional(readOnly = true)
+    public List<CategoryDTO.InfoResp> getCategoryList() {
+        return categoryRepository.findAll().stream()
+                .map(category -> CategoryDTO.InfoResp.builder()
+                        .categoryId(category.getId())
+                        .name(category.getName())
+                        .code(category.getCode())
+                        .build())
+                .collect(Collectors.toList());
     }
 
 }
