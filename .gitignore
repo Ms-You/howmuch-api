@@ -38,3 +38,6 @@ out/
 
 ### yml ###
 src/main/resources/application.yml
+
+### image file ###
+uploads/**
