@@ -16,13 +16,15 @@ public class Category {
     private Long id;
 
     private String name;
-    private int code;
+    private String path;   // 동적 라우팅을 위한 경로
+    private String url; // 이미지 경로
 
 
     @Builder
-    private Category(String name, int code) {
+    private Category(String name, String path, String url) {
         this.name = name;
-        this.code = code;
+        this.path = path;
+        this.url = url;
     }
 
 }
