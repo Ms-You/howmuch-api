@@ -10,7 +10,6 @@ public class CategoryDTO {
     @NoArgsConstructor
     public static class CreateReq {
         private String name;
-        private int code;
     }
 
     @Getter
@@ -20,6 +19,7 @@ public class CategoryDTO {
     public static class InfoResp {
         private Long categoryId;
         private String name;
-        private int code;
+        private String path;
+        private String url;
     }
 }

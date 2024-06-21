@@ -6,11 +6,10 @@ import com.dutchpay.howmuch.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -24,8 +23,9 @@ public class CategoryController {
      * @return
      */
     @PostMapping("/admin/category")
-    public ResponseEntity<BasicResponse> enrollCategory(@RequestBody CategoryDTO.CreateReq createReq) {
-        categoryService.enrollNewCategory(createReq);
+    public ResponseEntity<BasicResponse> enrollCategory(@RequestPart(name = "image", required = true) MultipartFile multipartFile,
+                                                        @RequestPart(name = "categoryReq", required = true) CategoryDTO.CreateReq createReq) throws IOException {
+        categoryService.enrollNewCategory(multipartFile, createReq);
 
         return ResponseEntity.ok(new BasicResponse(HttpStatus.CREATED.value(), "카테고리가 등록되었습니다."));
     }
