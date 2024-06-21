@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+import java.io.UnsupportedEncodingException;
+
 @Getter
 @AllArgsConstructor
 public enum ErrorCode {
@@ -13,6 +15,8 @@ public enum ErrorCode {
     METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED.value(), "허용되지 않은 요청입니다."),
     // 500
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "내부 서버 오류입니다."),
+
+    URL_ENCODING_FAILED(HttpStatus.INTERNAL_SERVER_ERROR.value(), "인코딩에 실패했습니다."),
 
 
     // 토큰 에러

@@ -7,20 +7,28 @@ import com.dutchpay.howmuch.domain.Category;
 import com.dutchpay.howmuch.domain.dto.CategoryDTO;
 import com.dutchpay.howmuch.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @Transactional
 @Service
 public class CategoryService {
     private final CategoryRepository categoryRepository;
     private final FileHandler fileHandler;
+
+    private static final Pattern KOREAN_PATTERN = Pattern.compile("[ㄱ-ㅎㅏ-ㅣ가-힣]+");
 
     /**
      * 카테고리 등록
@@ -62,10 +70,29 @@ public class CategoryService {
                 .map(category -> CategoryDTO.InfoResp.builder()
                         .categoryId(category.getId())
                         .name(category.getName())
-                        .path(category.getPath())
+                        .path(encodePath(category.getPath()))
                         .url(category.getUrl())
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * 카테고리 경로가 한글이면 인코딩해서 응답
+     * @param path
+     * @return
+     */
+    private String encodePath(String path) {
+        try {
+            // path 에 한글이 포함되어 있는지 확인
+            if(KOREAN_PATTERN.matcher(path).find()) {   // 한글이 있으면 인코딩 후 전달
+                return URLEncoder.encode(path, StandardCharsets.UTF_8.toString());
+            } else {
+                return path;
+            }
+        } catch (UnsupportedEncodingException e) {
+            log.error("카테고리 path 인코딩 실패", e);
+            throw new GlobalException(ErrorCode.URL_ENCODING_FAILED);
+        }
     }
 
 }
