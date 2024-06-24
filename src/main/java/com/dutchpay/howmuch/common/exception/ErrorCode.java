@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+import java.io.UnsupportedEncodingException;
+
 @Getter
 @AllArgsConstructor
 public enum ErrorCode {
@@ -13,6 +15,8 @@ public enum ErrorCode {
     METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED.value(), "허용되지 않은 요청입니다."),
     // 500
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "내부 서버 오류입니다."),
+
+    URL_ENCODING_FAILED(HttpStatus.INTERNAL_SERVER_ERROR.value(), "인코딩에 실패했습니다."),
 
 
     // 토큰 에러
@@ -26,6 +30,12 @@ public enum ErrorCode {
 
     // Member Error
     ID_OR_PASSWORD_WRONG(HttpStatus.BAD_REQUEST.value(), "아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."),
+    EMAIL_ALREADY_EXISTS(HttpStatus.BAD_REQUEST.value(), "이미 존재하는 이메일입니다."),
+    PASSWORD_NOT_MATCHED(HttpStatus.BAD_REQUEST.value(), "비밀번호가 일치하지 않습니다."),
+
+
+    // Category Error
+    CATEGORY_ALREADY_EXISTS(HttpStatus.BAD_REQUEST.value(), "이미 존재하는 카테고리입니다."),
     ;
 
     private int code;

@@ -19,17 +19,18 @@ public class Member {
     private String email;
     private String password;
     private String name;
-    private int age;
+    private String birth;
     private String gender;
+    @Enumerated(EnumType.STRING)
     private RoleType role;
 
 
     @Builder
-    private Member(String email, String password, String name, int age, String gender, RoleType role) {
+    private Member(String email, String password, String name, String birth, String gender, RoleType role) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.age = age;
+        this.birth = birth;
         this.gender = gender;
         this.role = role;
     }
