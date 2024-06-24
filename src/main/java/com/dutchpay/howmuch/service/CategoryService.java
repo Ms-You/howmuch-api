@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 public class CategoryService {
     private final CategoryRepository categoryRepository;
     private final FileHandler fileHandler;
-
+    private static final String CATEGORY_IMAGE_PATH = "uploads/category";
     private static final Pattern KOREAN_PATTERN = Pattern.compile("[ㄱ-ㅎㅏ-ㅣ가-힣]+");
 
     /**
@@ -40,7 +40,7 @@ public class CategoryService {
             throw new GlobalException(ErrorCode.CATEGORY_ALREADY_EXISTS);
         }
 
-        String savedFilename = fileHandler.uploadImage(multipartFile, "uploads/category");
+        String savedFilename = fileHandler.uploadImage(multipartFile, CATEGORY_IMAGE_PATH);
 
         Category category = Category.builder()
                 .name(createReq.getName())
@@ -71,7 +71,7 @@ public class CategoryService {
                         .categoryId(category.getId())
                         .name(category.getName())
                         .path(encodePath(category.getPath()))
-                        .url(category.getUrl())
+                        .url(CATEGORY_IMAGE_PATH + "/" + category.getUrl())
                         .build())
                 .collect(Collectors.toList());
     }
