@@ -61,6 +61,7 @@ public class TokenProvider {
 
         String refreshToken = Jwts.builder()
                 .setSubject(authentication.getName())
+                .claim(AUTHORITIES_KEY, authorities)
                 .setExpiration(new Date(now + REFRESH_TOKEN_EXPIRES_IN))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .setIssuer("how-much")
@@ -71,12 +72,12 @@ public class TokenProvider {
     }
 
     /**
-     * AccessToken 토큰으로 Authentication 객체 추출
-     * @param accessToken
+     * jwt token 토큰으로 Authentication 객체 추출
+     * @param token
      * @return
      */
-    public Authentication getAuthentication(String accessToken) {
-        Claims claims = parseClaims(accessToken);
+    public Authentication getAuthentication(String token) {
+        Claims claims = parseClaims(token);
 
         if(claims.get(AUTHORITIES_KEY) == null) {
             throw new RuntimeException("권한 정보가 없는 토큰입니다.");
@@ -96,14 +97,14 @@ public class TokenProvider {
 
     /**
      * 토큰 복호화
-     * @param accessToken
+     * @param token
      * @return
      */
-    public Claims parseClaims(String accessToken) {
+    public Claims parseClaims(String token) {
         try {
             return Jwts.parserBuilder()
                     .setSigningKey(key).build()
-                    .parseClaimsJws(accessToken)
+                    .parseClaimsJws(token)
                     .getBody();
         } catch (ExpiredJwtException e) {
             return e.getClaims();
